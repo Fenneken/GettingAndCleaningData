@@ -55,10 +55,9 @@ TrainingandTest <- rbind(TrainingComplete,TestComplete)
 #End of part 1
 
 #Part 2 Extracts only the measurements on the mean and standard deviation for each measurement. 
-#Vars2bEvaluated <- c("SubjectNr","ActivityNr",grep("mean|std",featurelist, value = TRUE )) # Determine which Variables to extract
-#Select the first 2 columns and those that contain 'mean' or 'std'
+#Select the first 2 columns and those that contain 'Mean' or 'Standard'
 library(dplyr)
-Set4Analysis <- cbind(TrainingandTest[,1:2],select(TrainingandTest,contains("mean")),select(TrainingandTest,contains("std")))
+Set4Analysis <- cbind(TrainingandTest[,1:2],select(TrainingandTest,contains("Mean")),select(TrainingandTest,contains("Standard")))
 #end part 2
 
 ##3 Uses descriptive activity names to name the activities in the data set
@@ -68,7 +67,8 @@ merged4analysis <- merge(activity_labels,Set4Analysis,by="ActivityNr") #do activ
 
 #From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 #Aggregate the dataset by SubjectNr and ActivityLabel
-newset <- aggregate(merged4analysis[, 4:56], list(merged4analysis$SubjectNr,merged4analysis$ActivityLabel), mean)
+newset <- aggregate(merged4analysis[, 4:89], list(merged4analysis$SubjectNr,merged4analysis$ActivityLabel), mean)
 colnames(newset)[1:2] <- c("Subject","Activity") #give the columns meaningful names
 
-# write.table(newset,file="tidydataset.txt", row.name=FALSE) to write it into a file 
+#write table
+write.table(newset,file="tidydataset.txt", row.name=FALSE) # to write it into a file 

@@ -19,3 +19,5 @@ Most important steps:
 And then to come to the final set:
 * aggregated the dataset by Subject and Activity
 * this is the final dataset 'newset'
+
+Finally the dataset is written to 'tidydataset.txt'

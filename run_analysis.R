@@ -8,6 +8,10 @@
 #5 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 #Download the zipfile
+#first makesure that the directory data exists
+if (!file.exists("data")){
+     dir.create("data")
+}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(fileUrl, destfile = "./data/FUCIHARDataset.zip",method="curl")
 unzip("./data/FUCIHARDataset.zip",exdir="./data") #unzip the file
